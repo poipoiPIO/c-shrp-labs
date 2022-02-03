@@ -45,11 +45,10 @@ class Workman {
                                   previousWorkman.Age           ,
                                   previousWorkman.ExperienceAge);
 
-  public override string ToString() {
-    return $"---------{Name}---------\n"   +
-           $"Age:        {Age}\n"          +
-           $"Experience: {ExperienceAge}\n";
-  }
+  public override string ToString() =>
+    $"---------{Name}---------\n"   +
+    $"Age:        {Age}\n"          +
+    $"Experience: {ExperienceAge}\n";
 }
 
 class EmployerInfo {
@@ -66,15 +65,14 @@ class EmployerInfo {
   public EmployerInfo()                                                              => 
     (OrganizationName, DirectorName, OrganizationAddress) = ("NoName", "NoName", "Empty");
 
-  public EmployerInfo(EmployerInfo employerInfo) => 
+  public EmployerInfo(EmployerInfo employerInfo)                                     => 
     (OrganizationName, DirectorName, OrganizationAddress) = (employerInfo.OrganizationName    , 
                                                              employerInfo.DirectorName        ,
                                                              employerInfo.OrganizationAddress);
  
-  public override string ToString() {
-    return $"---------{OrganizationName}---------\n"       +
-           $"Director Name:        {DirectorName}\n"       +
-           $"Organization Address: {OrganizationAddress}\n";
-  }
+  public override string ToString() =>
+    $"---------{OrganizationName}---------\n"       +
+    $"Director Name:        {DirectorName}\n"       +
+    $"Organization Address: {OrganizationAddress}\n";
 }
 
