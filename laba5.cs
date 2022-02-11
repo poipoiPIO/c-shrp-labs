@@ -6,7 +6,6 @@ class Program {
     var maid_worker = new Worker("Vasia", "male", "maid", "maid suit"); 
     var ex_employer = new  Employer("Oleg", "Eduardovich", "male"); 
     var ex_cashier  = new  Cashier("Geliow Menicky", "male");
-    var ex_accountant  = new  Accountant("Youiak Kachincky", "female");
 
     Console.WriteLine("________PersonClassExample________");
     Console.WriteLine(ex_person);
@@ -24,10 +23,6 @@ class Program {
     Console.WriteLine("\n________CashierClassExample________");
     Console.WriteLine(ex_cashier);
     ex_cashier.doWork();
-
-    Console.WriteLine("\n________AccountantClassExample________");
-    Console.WriteLine(ex_accountant);
-    ex_accountant.doWork();
   }
 }
 
@@ -101,14 +96,8 @@ class Cashier : Worker {
     $"And post is: Cashier!";
 }
 
-class Accountant : Worker {
-  public override void doWork() =>
-    Console.WriteLine($"{Name} is working with huge amount of an caluculating stuff ^_^!");
-  
-  public Accountant(string name, string sex) =>
-    (Name, Sex, Post, Uniform) = (name, sex, "accountant", "accountant uniform");
-
-  public override string ToString() =>
-    $"An accountant whose name is: {Name}\n" +
-    $"And post is: accountant meh....";
+abstract class Accountant : Worker {
+  public string Department { get; set; }
+  public abstract string doAbstractAccountmentWork();
+  public abstract string drinkSomeTea();
 }
