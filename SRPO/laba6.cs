@@ -2,7 +2,7 @@ using System;
 
 class ConstructorTests {
   public static void Main (string[] args) {
-    var vasia         = new Workman ("Vasia", 42, 12)                                   ;
+    var vasia         = new Workman ("Pety", 42, 12)                                   ;
     var vasiaCopy     = new Workman (vasia)                                             ;
     var internPetya   = new Workman ("Petya")                                           ;
 

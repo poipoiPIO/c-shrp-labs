@@ -29,7 +29,7 @@ class Program {
     foreach(var elem in service)
       if(elem.RegNum == choise) 
         return elem;
-    throw new Exception($"List has no elem with regNum of {choise}");
+    throw new Exception($"Список не имеет машиныпод номером: {choise}");
   }
 
   static void editElemByRegNum(ref CarService[] service, int choise) {
@@ -38,7 +38,7 @@ class Program {
         initElem(ref service[i]);
         return;
       }
-    Console.WriteLine($"Cant find elem by query: {choise}");
+    Console.WriteLine($"Не могу найти машину по запросу: {choise}");
   }
 
   static void initElem(ref CarService service) {
@@ -52,6 +52,7 @@ class Program {
     service.Mechanic = Console.ReadLine();
     Console.WriteLine("Введите марку машины                :");
     service.CarBrand = Console.ReadLine();
+    Console.WriteLine();
   }
 }
 
