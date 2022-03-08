@@ -19,9 +19,10 @@ class Program {
           };
       }); 
      
-     Console.WriteLine($"Origin string:       {str}");
-     Console.WriteLine($"Average word length: {averageLength}");
-     Console.WriteLine($"Modified string:     {string.Join(" ", result)}");
+     Console.WriteLine($"Origin string:        {str}");
+     Console.WriteLine($"Random character set: {alphabet}");
+     Console.WriteLine($"Average word length:  {averageLength}");
+     Console.WriteLine($"Modified string:      {string.Join(" ", result)}");
   }
 
   static Random random = new();
