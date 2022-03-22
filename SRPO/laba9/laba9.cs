@@ -11,8 +11,7 @@ class Program {
   }
   
   static IEnumerable<double> castStringNumsToInt(string input) =>
-    input.Split(" ")
-         .Select(str => Double.Parse(str));
+    input.Split(" ").Select(str => Double.Parse(str));
 
   static (double, double) calculateFormula(double x) =>
     (x, ((1 - Math.Pow(x, 2)) / (1 + Math.Pow(x, 4))));
