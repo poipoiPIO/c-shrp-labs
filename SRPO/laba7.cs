@@ -3,9 +3,12 @@ using System;
 class Program {
   public static void Main (string[] args) {
     CarService[] service = new CarService[3];
+
+    //Fill array of structures with entitys
     for(int i = 0; i<service.Length; i++)
       initElem(ref service[i]);
 
+    //Print what we got
     foreach(var carService in service)
       Console.WriteLine(carService);
 
