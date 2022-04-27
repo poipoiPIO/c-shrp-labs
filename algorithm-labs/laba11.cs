@@ -4,16 +4,32 @@ using System.Collections.Generic;
 
 class Solve {
   static void Main () {
-    Console.WriteLine("Задание 1:");
+    Console.WriteLine("Задание 1_1:"); 
+    Laba11_1_1.Solve(); 
+    Console.WriteLine(); 
+
+    Console.WriteLine("Задание 1_2:");
+    Laba11_1_2.Solve();
+    Console.WriteLine();
+
+    Console.WriteLine("Задание 1_3:");
+    Laba11_1_3.Solve();
+
+    Console.WriteLine("Задание 2_1:");
     Laba11_2_1.Solve();
     Console.WriteLine();
 
-    Console.WriteLine("Задание 2:");
+    Console.WriteLine("Задание 2_2:");
     Laba11_2_2.Solve();
   }
 }
 
 static class Laba11_1_1 {
+  public static void Solve() {
+    Console.WriteLine($"Sum of 1.1 and 2.2 is:  {Sum(1.1, 2.2)}");
+    Console.WriteLine($"Mult of 1.1 and 2.2 is: {Mult(1.1, 2.2)}");
+  }
+
   static double Sum (double first, double second) =>
     first + second;
 
@@ -22,6 +38,22 @@ static class Laba11_1_1 {
 } 
 
 static class Laba11_1_2 {
+  public static void Solve() {
+    List<(string, string)[]> directory = new List<(string, string)[]> {
+      new[] {("Mewocally", "110110"), ("Mewosocally", "777077")},
+      new[] {("Panlappy",  "202020"), ("Pancacally",  "020233")}, 
+      new[] {("Ziggipon",  "302233"), ("Zollios",     "Meowol")},
+    };
+
+    string alphabet = "MPZ",
+           name     = "Mewosocally";
+
+    Console.WriteLine (
+      $"The phone number of Mewosocally:" +
+      $" {FindInDirectory(alphabet, name, directory)}"
+    );
+  }
+  
   static string FindInDirectory
     (string alphabet, string name, List<(string, string)[]> directory) {
       int alphabetLength = alphabet.Length;
@@ -38,29 +70,48 @@ static class Laba11_1_2 {
 class Laba11_1_3 {
   class Subject {
     public string Name { get; set; }
-    public bool IsDebt { get; set; }
 
-    Subject(string name, bool debt) =>
-      (Name, IsDebt) = (name, debt);
+    public Subject(string name) =>
+      Name = name;
   }
 
   class Student {
-   public string    Name     { get; set; }
-   public Subject[] Subjects { get; set; }
+   public string            Name     { get; set; }
+   public (Subject, bool)[] Subjects { get; set; } // (name, is Debt) tuple
 
-    Student (string name, Subject[] subjects) =>
+    public Student (string name, (Subject, bool)[] subjects) =>
       (Name, Subjects) = (name, subjects);
 
-    public IEnumerable<Subject> getDebt() =>
-      Subjects.Where(elem => elem.IsDebt);
+    public IEnumerable<(Subject, bool)> getDebt() =>
+      Subjects.Where(elem => elem.Item2 == true);
+  }
+
+  static public void Solve() {
+    Subject math   = new Subject("Math");
+    Subject erlang = new Subject("Erlang");
+
+    Student[] Group = {
+      new Student("Sonya",   new (Subject, bool)[] {
+        (math, false)
+      }),
+      new Student("Vladlen", new (Subject, bool)[] {
+        (erlang, true), (math, false)
+      }),
+      new Student("Semen",   new (Subject, bool)[] {
+        (erlang, false), (math, true)
+      })
+    };
+
+    printDebtors(Group);
   }
   
-  void printDebtors( Student[] Group ) {
+  static void printDebtors(Student[] Group) {
     foreach (var student in Group) 
       if (student.getDebt().Any()) {
-        Console.WriteLine(student.Name);
+        Console.WriteLine($"{student.Name}:");
         foreach(var debt in student.getDebt())
-          Console.WriteLine(debt.Name);
+          Console.WriteLine(" " + debt.Item1.Name);
+        Console.WriteLine();
       }
   }
 }
